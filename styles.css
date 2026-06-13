@@ -1,110 +1,123 @@
 :root {
-    --bg-dark: #121212;
-    --panel-bg: #1e1e1e;
-    --text-main: #e0e0e0;
-    --accent-blue: #3b82f6;
-    --accent-green: #10b981;
-    --accent-red: #ef4444;
-    --accent-orange: #f59e0b;
+    --bg-color: #f0f4f8;
+    --text-color: #1e293b;
+    --card-bg: #ffffff;
+    --primary-blue: #3b82f6;
+    --agent-bg: #e0f2fe;
+    --agent-border: #7dd3fc;
+    --highlight: #f59e0b;
+    --success: #10b981;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-dark);
-    color: var(--text-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
     margin: 0;
     padding: 0;
 }
 
-.navbar {
-    background-color: #000;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid var(--accent-blue);
+.header {
+    background-color: #1e293b;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.navbar h1 {
+.header h1 {
+    margin: 0 0 15px 0;
     font-size: 1.5rem;
-    margin: 0;
 }
 
-.badge {
-    padding: 5px 10px;
+.btn-start {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 10px 20px;
     border-radius: 5px;
     font-weight: bold;
-    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.badge.success { background-color: var(--accent-green); color: white; }
+.btn-start:hover { background-color: #2563eb; }
+.btn-start:disabled { background-color: #94a3b8; cursor: not-allowed; }
 
-.container {
+.dashboard {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr 2fr 1fr;
     gap: 20px;
-    padding: 20px;
+    padding: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-.agent-panel {
-    background-color: var(--panel-bg);
+.column h2 {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #475569;
+    border-bottom: 2px solid var(--primary-blue);
+    padding-bottom: 10px;
+}
+
+.cycle-box {
+    border: 3px dashed var(--agent-border);
+    border-radius: 15px;
+    padding: 20px;
+    background-color: var(--agent-bg);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid #cbd5e1;
     border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    border-top: 4px solid var(--accent-blue);
-}
-
-.agent-panel h2 { font-size: 1.2rem; margin-top: 0; }
-.subtitle { color: #888; font-size: 0.9rem; margin-bottom: 15px; }
-
-.data-box {
-    background-color: #2a2a2a;
-    border-radius: 5px;
     padding: 15px;
     margin-bottom: 15px;
-    min-height: 100px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
 }
 
-.data-box h3 { font-size: 1rem; margin-top: 0; color: #aaa; }
+.card h3 {
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    color: var(--primary-blue);
+}
 
-ul { padding-left: 20px; margin: 0; }
-ul li { margin-bottom: 8px; }
-
-.log-console {
-    background-color: #000;
-    color: #0f0;
-    font-family: 'Courier New', Courier, monospace;
+.card p {
+    margin: 5px 0;
     font-size: 0.85rem;
-    padding: 10px;
-    border-radius: 5px;
-    height: 100px;
-    overflow-y: auto;
 }
 
-.log-console p { margin: 5px 0; }
+/* Clases dinámicas manejadas por JavaScript */
+.active-step {
+    border: 2px solid var(--highlight);
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+    transform: scale(1.02);
+}
 
-.btn {
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
+.feedback-loop {
+    background-color: #1e293b;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    transition: all 0.5s ease;
+    opacity: 0.8;
+}
+
+.feedback-active {
+    background-color: var(--success);
+    opacity: 1;
+}
+
+.arrow-left {
     font-weight: bold;
-    transition: opacity 0.2s;
-    margin-right: 10px;
-    margin-bottom: 15px;
+    margin-right: 15px;
+    color: #ffd700;
 }
-
-.btn:hover { opacity: 0.8; }
-.btn:disabled { opacity: 0.4; cursor: not-allowed; }
-.btn.primary { background-color: var(--accent-blue); color: white; }
-.btn.success { background-color: var(--accent-green); color: white; }
-.btn.danger { background-color: var(--accent-red); color: white; }
-
-.code-diff {
-    font-family: 'Courier New', Courier, monospace;
-    color: var(--accent-orange);
-    white-space: pre-wrap;
-    font-size: 0.9rem;
-}
-
-.idle-text { color: #666; font-style: italic; }

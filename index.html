@@ -3,68 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agente Autónomo SEO - Prototipo</title>
+    <title>Modelo Conceptual - Agente Autónomo</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header class="header">
-        <h1>Sistema Multiagente para Posicionamiento (Prototipo)</h1>
-        <p>Basado en el Modelo Conceptual de Agente Autónomo</p>
+        <h1>Modelo Conceptual de un Agente Autónomo para Posicionamiento</h1>
+        <div class="input-container">
+            <input type="text" id="keyword-input" placeholder="Ingresa un tema (Ej. Inteligencia Artificial, Bitcoin, Zapatillas...)">
+            <button id="btn-start" class="btn-primary">Iniciar Flujo del Agente</button>
+        </div>
     </header>
 
-    <main class="container">
-        <section class="input-section">
-            <h2>1. Fuentes de Interés y Datos</h2>
-            <div class="input-group">
-                <label for="topic-input">Ingresa una categoría o tema a posicionar:</label>
-                <input type="text" id="topic-input" placeholder="Ej. Inteligencia Artificial, Zapatillas deportivas, Criptomonedas...">
-                <button id="btn-start">Iniciar Agente Autónomo</button>
+    <main class="dashboard">
+        <section class="column">
+            <h2>Fuentes de interés y datos</h2>
+            <div class="card" id="step-trends">
+                <h3>Información de Tendencias</h3>
+                <p>Búsqueda de noticias y uso de Google Trends.</p>
+                <div class="dynamic-content"></div>
+            </div>
+            <div class="card" id="step-market">
+                <h3>Datos de Mercado</h3>
+                <p>Análisis de valores financieros y métricas comerciales.</p>
+                <div class="dynamic-content"></div>
             </div>
         </section>
 
-        <section class="agent-process" id="agent-process" style="display: none;">
-            <h2>2. Ciclo Interno del Agente</h2>
-            <div class="progress-container">
-                <div class="progress-bar" id="progress-bar"></div>
+        <section class="column center-column">
+            <h2>Ciclo Interno del Agente</h2>
+            <div class="cycle-box">
+                <div class="card" id="step-1">
+                    <h3>1. Escaneado y Detección</h3>
+                    <p>Captar tendencias y palabras clave (Perplexity AI).</p>
+                </div>
+                <div class="card" id="step-2">
+                    <h3>2. Estrategia y Alineación SEO</h3>
+                    <p>Cruzar datos y generar hipótesis (Surfer SEO).</p>
+                </div>
+                <div class="card" id="step-3">
+                    <h3>3. Fabricación de Contenido</h3>
+                    <p>Generación de imágenes, optimización y redacción (Claude).</p>
+                </div>
+                <div class="card" id="step-4">
+                    <h3>4. Análisis y Publicación</h3>
+                    <p>Evaluación de resultados por el equipo humano (N.R.V).</p>
+                </div>
+                <div class="card" id="step-5">
+                    <h3>5. Fase de Sensor (Decisiones)</h3>
+                    <p>Si funciona -> Reforzar. Si no -> Replantear.</p>
+                </div>
             </div>
-            <p id="agent-status" class="status-text">Iniciando escaneado y detección...</p>
         </section>
 
-        <section class="results-section" id="results-section" style="display: none;">
-            <h2>3. Resultados: Fabricación de Contenido</h2>
+        <section class="column">
+            <h2>Acción y Resultados</h2>
             
-            <div class="results-grid">
-                <div class="result-card">
-                    <h3>📊 Análisis de Tendencia</h3>
-                    <p class="trend-status" id="trend-status">Calculando...</p>
-                    <canvas id="trendChart"></canvas>
-                </div>
-
-                <div class="result-card">
-                    <h3>✍️ Redacción (Claude)</h3>
-                    <div class="generated-content" id="gen-redaccion"></div>
-                </div>
-
-                <div class="result-card">
-                    <h3>⚙️ Optimización Técnica (Surfer SEO)</h3>
-                    <div class="generated-content code-block" id="gen-seo"></div>
-                </div>
-
-                <div class="result-card">
-                    <h3>🖼️ Generación de Imágenes</h3>
-                    <div class="image-placeholder" id="gen-imagen">
-                        <span>Generando prompt visual...</span>
-                    </div>
-                </div>
+            <div class="card output-card" id="step-portfolio">
+                <h3>Portafolio de Publicaciones</h3>
+                <p class="static-desc">Colección de activos y redacción.</p>
+                <div class="dynamic-content" id="res-portfolio"></div>
             </div>
             
-            <div class="feedback-loop">
-                <button id="btn-reset" class="btn-secondary">↺ Bucle AGI: Aprender y Nueva Consulta</button>
-            </div>
-        </section>
-    </main>
-
-    <script src="app.js"></script>
-</body>
-</html>
+            <div class="card output-card" id="step-cms">
+                <h3>Ejecución de Publicación (CMS)</h3>
+                <p class="static-desc">Subida de contenido y código técnico.</p>
+                <div class="dynamic-content code-block" id="res

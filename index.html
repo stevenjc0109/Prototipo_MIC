@@ -11,7 +11,7 @@
     <header class="header">
         <h1>Modelo Conceptual de un Agente Autónomo para Posicionamiento</h1>
         <div class="input-container">
-            <input type="text" id="keyword-input" placeholder="Ingresa un tema (Ej. Inteligencia Artificial, Bitcoin, Zapatillas...)">
+            <input type="text" id="keyword-input" placeholder="Ingresa un tema (Ej. Libros, Tecnología...)">
             <button id="btn-start" class="btn-primary">Iniciar Flujo del Agente</button>
         </div>
     </header>
@@ -22,12 +22,10 @@
             <div class="card" id="step-trends">
                 <h3>Información de Tendencias</h3>
                 <p>Búsqueda de noticias y uso de Google Trends.</p>
-                <div class="dynamic-content"></div>
             </div>
             <div class="card" id="step-market">
                 <h3>Datos de Mercado</h3>
                 <p>Análisis de valores financieros y métricas comerciales.</p>
-                <div class="dynamic-content"></div>
             </div>
         </section>
 
@@ -59,14 +57,21 @@
 
         <section class="column">
             <h2>Acción y Resultados</h2>
-            
             <div class="card output-card" id="step-portfolio">
                 <h3>Portafolio de Publicaciones</h3>
-                <p class="static-desc">Colección de activos y redacción.</p>
-                <div class="dynamic-content" id="res-portfolio"></div>
+                <div class="dynamic-content" id="res-portfolio">Esperando datos del agente...</div>
             </div>
-            
             <div class="card output-card" id="step-cms">
                 <h3>Ejecución de Publicación (CMS)</h3>
-                <p class="static-desc">Subida de contenido y código técnico.</p>
-                <div class="dynamic-content code-block" id="res
+                <div class="dynamic-content code-block" id="res-cms">Esperando datos del agente...</div>
+            </div>
+            <div class="card output-card" id="step-metrics">
+                <h3>Métricas de Desempeño SEO</h3>
+                <canvas id="trendChart" style="display: none;"></canvas>
+                <div id="res-metrics" style="text-align: center; font-style: italic; font-size: 0.9em; margin-top:10px;">Esperando datos del agente...</div>
+            </div>
+        </section>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>

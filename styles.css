@@ -22,13 +22,8 @@ body {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.input-container {
-    margin-top: 15px; display: flex; justify-content: center; gap: 10px;
-}
-
-.input-container input {
-    padding: 10px; width: 300px; border-radius: 5px; border: none; font-size: 1rem;
-}
+.input-container { margin-top: 15px; display: flex; justify-content: center; gap: 10px; }
+.input-container input { padding: 10px; width: 300px; border-radius: 5px; border: none; font-size: 1rem; }
 
 .btn-primary {
     background-color: var(--primary-blue); color: white; border: none;
@@ -62,7 +57,6 @@ body {
 .card h3 { margin: 0 0 5px 0; font-size: 1rem; color: var(--primary-blue); }
 .card p { margin: 0; font-size: 0.85rem; color: #64748b; }
 
-/* Animación de paso activo */
 .active-step {
     border: 2px solid var(--highlight);
     box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
@@ -70,19 +64,5 @@ body {
     background-color: #fffbeb;
 }
 
-/* Estilos para el contenido generado */
-.dynamic-content { margin-top: 10px; display: none; }
-.output-card.finished .static-desc { display: none; }
-.output-card.finished .dynamic-content { display: block; animation: fadeIn 0.5s; }
-
-.content-box {
-    background: #f8fafc; padding: 10px; border-radius: 5px; border-left: 3px solid var(--success);
-    font-size: 0.9rem; margin-top: 10px;
-}
-
-.code-block {
-    background: #1e293b; color: #10b981; font-family: monospace;
-    padding: 10px; border-radius: 5px; white-space: pre-wrap; font-size: 0.8rem;
-}
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.dynamic-content { margin-top: 10px; font-size: 0.9rem; padding: 10px; background: #f8fafc; border-left: 3px solid var(--success); border-radius: 5px;}
+.code-block { background: #1e293b; color: #10b981; font-family: monospace; white-space: pre-wrap; border-left: none;}

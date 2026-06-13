@@ -4,8 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modelo Conceptual - Agente Autónomo</title>
-    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-color: #f0f4f8; --text-color: #1e293b; --card-bg: #ffffff;
+            --primary-blue: #3b82f6; --agent-bg: #e0f2fe; --agent-border: #7dd3fc;
+            --highlight: #f59e0b; --success: #10b981;
+        }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; }
+        .header { background-color: #1e293b; color: white; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .input-container { margin-top: 15px; display: flex; justify-content: center; gap: 10px; }
+        .input-container input { padding: 10px; width: 300px; border-radius: 5px; border: none; font-size: 1rem; }
+        .btn-primary { background-color: var(--primary-blue); color: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        .btn-primary:hover { background-color: #2563eb; }
+        .btn-primary:disabled { background-color: #94a3b8; cursor: not-allowed; }
+        .dashboard { display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 20px; padding: 30px; max-width: 1400px; margin: 0 auto; }
+        .column h2 { text-align: center; font-size: 1.2rem; color: #475569; border-bottom: 2px solid var(--primary-blue); padding-bottom: 10px; }
+        .cycle-box { border: 3px dashed var(--agent-border); border-radius: 15px; padding: 20px; background-color: var(--agent-bg); display: flex; flex-direction: column; gap: 10px; }
+        .card { background-color: var(--card-bg); border: 1px solid #cbd5e1; border-radius: 8px; padding: 15px; margin-bottom: 15px; transition: all 0.3s ease; }
+        .card h3 { margin: 0 0 5px 0; font-size: 1rem; color: var(--primary-blue); }
+        .card p { margin: 0; font-size: 0.85rem; color: #64748b; }
+        .active-step { border: 2px solid var(--highlight); box-shadow: 0 0 15px rgba(245, 158, 11, 0.5); transform: scale(1.03); background-color: #fffbeb; }
+        .dynamic-content { margin-top: 10px; font-size: 0.9rem; padding: 10px; background: #f8fafc; border-left: 3px solid var(--success); border-radius: 5px;}
+        .code-block { background: #1e293b; color: #10b981; font-family: monospace; white-space: pre-wrap; border-left: none;}
+    </style>
 </head>
 <body>
     <header class="header">
@@ -19,39 +41,18 @@
     <main class="dashboard">
         <section class="column">
             <h2>Fuentes de interés y datos</h2>
-            <div class="card" id="step-trends">
-                <h3>Información de Tendencias</h3>
-                <p>Búsqueda de noticias y uso de Google Trends.</p>
-            </div>
-            <div class="card" id="step-market">
-                <h3>Datos de Mercado</h3>
-                <p>Análisis de valores financieros y métricas comerciales.</p>
-            </div>
+            <div class="card" id="step-trends"><h3>Información de Tendencias</h3><p>Búsqueda de noticias y uso de Google Trends.</p></div>
+            <div class="card" id="step-market"><h3>Datos de Mercado</h3><p>Análisis de valores financieros y métricas comerciales.</p></div>
         </section>
 
         <section class="column center-column">
             <h2>Ciclo Interno del Agente</h2>
             <div class="cycle-box">
-                <div class="card" id="step-1">
-                    <h3>1. Escaneado y Detección</h3>
-                    <p>Captar tendencias y palabras clave (Perplexity AI).</p>
-                </div>
-                <div class="card" id="step-2">
-                    <h3>2. Estrategia y Alineación SEO</h3>
-                    <p>Cruzar datos y generar hipótesis (Surfer SEO).</p>
-                </div>
-                <div class="card" id="step-3">
-                    <h3>3. Fabricación de Contenido</h3>
-                    <p>Generación de imágenes, optimización y redacción (Claude).</p>
-                </div>
-                <div class="card" id="step-4">
-                    <h3>4. Análisis y Publicación</h3>
-                    <p>Evaluación de resultados por el equipo humano (N.R.V).</p>
-                </div>
-                <div class="card" id="step-5">
-                    <h3>5. Fase de Sensor (Decisiones)</h3>
-                    <p>Si funciona -> Reforzar. Si no -> Replantear.</p>
-                </div>
+                <div class="card" id="step-1"><h3>1. Escaneado y Detección</h3><p>Captar tendencias y palabras clave (Perplexity AI).</p></div>
+                <div class="card" id="step-2"><h3>2. Estrategia y Alineación SEO</h3><p>Cruzar datos y generar hipótesis (Surfer SEO).</p></div>
+                <div class="card" id="step-3"><h3>3. Fabricación de Contenido</h3><p>Generación de imágenes, optimización y redacción (Claude).</p></div>
+                <div class="card" id="step-4"><h3>4. Análisis y Publicación</h3><p>Evaluación de resultados por el equipo humano (N.R.V).</p></div>
+                <div class="card" id="step-5"><h3>5. Fase de Sensor (Decisiones)</h3><p>Si funciona -> Reforzar. Si no -> Replantear.</p></div>
             </div>
         </section>
 
@@ -72,6 +73,85 @@
             </div>
         </section>
     </main>
-    <script src="app.js"></script>
+
+    <script>
+        let chartInstance = null;
+
+        document.getElementById('btn-start').addEventListener('click', function() {
+            const keyword = document.getElementById('keyword-input').value.trim();
+            if (!keyword) {
+                alert("Por favor, ingresa un tema o palabra clave (Ej. Libros).");
+                return;
+            }
+
+            const btn = this;
+            btn.disabled = true;
+            btn.innerText = "Procesando...";
+
+            document.getElementById('res-portfolio').innerText = "Procesando...";
+            document.getElementById('res-cms').innerText = "Procesando...";
+            document.getElementById('res-metrics').innerText = "Procesando...";
+            document.getElementById('trendChart').style.display = 'none';
+
+            const flowPath = ['step-trends', 'step-market', 'step-1', 'step-2', 'step-3', 'step-4', 'step-5', 'step-portfolio', 'step-cms', 'step-metrics'];
+            let currentStep = 0;
+
+            const interval = setInterval(() => {
+                if (currentStep > 0) {
+                    document.getElementById(flowPath[currentStep - 1]).classList.remove('active-step');
+                }
+
+                if (currentStep >= flowPath.length) {
+                    clearInterval(interval);
+                    btn.disabled = false;
+                    btn.innerText = "Iniciar Nuevo Flujo";
+                    return;
+                }
+
+                const currentCard = document.getElementById(flowPath[currentStep]);
+                currentCard.classList.add('active-step');
+
+                if (flowPath[currentStep] === 'step-portfolio') {
+                    document.getElementById('res-portfolio').innerHTML = `<strong>Tópico Analizado:</strong> ${keyword}<br><br><strong>Redacción (Claude):</strong> Hemos detectado un alto volumen de búsquedas para "${keyword}". Se ha generado un set de artículos listos para publicar.`;
+                }
+                
+                if (flowPath[currentStep] === 'step-cms') {
+                    document.getElementById('res-cms').innerText = `\n<title>Tendencias sobre ${keyword}</title>\n<meta name="robots" content="index, follow">`;
+                }
+
+                if (flowPath[currentStep] === 'step-metrics') {
+                    document.getElementById('res-metrics').style.display = 'none';
+                    renderChart(keyword);
+                }
+
+                currentStep++;
+            }, 800); 
+        });
+
+        function renderChart(keyword) {
+            const canvas = document.getElementById('trendChart');
+            canvas.style.display = 'block';
+            const ctx = canvas.getContext('2d');
+
+            if (chartInstance) { chartInstance.destroy(); }
+
+            const dataPoints = Array.from({length: 4}, () => Math.floor(Math.random() * 500) + 200);
+
+            chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
+                    datasets: [{
+                        label: `Tráfico Proyectado: ${keyword}`,
+                        data: dataPoints,
+                        backgroundColor: 'rgba(16, 185, 129, 0.5)',
+                        borderColor: 'rgba(16, 185, 129, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: { responsive: true }
+            });
+        }
+    </script>
 </body>
 </html>

@@ -3,63 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard SOP - Arquitectura Multiagente</title>
+    <title>Modelo Conceptual - Agente Autónomo</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="navbar">
-        <h1>Sistema de Control Multiagente SEO</h1>
-        <div class="metrics">
-            <span class="badge success">Estabilidad Sistema: 85.9%</span>
-        </div>
+    <header class="header">
+        <h1>Modelo Conceptual de un Agente Autónomo para Posicionamiento</h1>
+        <button id="btn-start" class="btn-start">Iniciar Flujo de Trabajo</button>
     </header>
 
-    <div class="container">
-        <section class="agent-panel" id="panel-amc">
-            <h2>1. Agente de Monitoreo Continuo (AMC)</h2>
-            <p class="subtitle">Sensor del sistema en tiempo real.</p>
-            <div class="data-box">
-                <h3>Telemetría (Core Web Vitals & SERP)</h3>
-                <ul id="amc-telemetry">
-                    <li>Esperando datos de rastreadores...</li>
-                </ul>
+    <main class="dashboard">
+        <!-- Columna 1: Entradas -->
+        <section class="column">
+            <h2>Fuentes de interés y datos</h2>
+            <div class="card input-card" id="data-trends">
+                <h3>Información de Tendencias</h3>
+                <p>Búsqueda de noticias de interés y uso de herramientas como Google Trends.</p>
             </div>
-            <button id="btn-simulate-anomaly" class="btn primary">Simular Caída de Tráfico</button>
-            <div class="log-console" id="log-amc">
-                <p>> AMC Inicializado. Monitoreando entorno probabilístico...</p>
+            <div class="card input-card" id="data-market">
+                <h3>Datos de Mercado</h3>
+                <p>Análisis de valores financieros, criptomonedas (BTC, ETH) y métricas comerciales.</p>
             </div>
         </section>
 
-        <section class="agent-panel" id="panel-aps">
-            <h2>2. Agente de Procesamiento Semántico (APS)</h2>
-            <p class="subtitle">Análisis de distancia vectorial y brechas de entidad.</p>
-            <div class="data-box">
-                <h3>Directrices Generadas (SOP)</h3>
-                <ul id="aps-sops">
-                    <li class="idle-text">En espera de alertas del AMC...</li>
-                </ul>
-            </div>
-            <div class="log-console" id="log-aps">
-                <p>> APS en espera de JSON estructurado...</p>
+        <!-- Columna 2: El Ciclo del Agente -->
+        <section class="column center-column">
+            <h2>Ciclo Interno del Agente</h2>
+            <div class="cycle-box">
+                <div class="card agent-step" id="step-1">
+                    <h3>1. Escaneado y Detección</h3>
+                    <p><strong>Función:</strong> Captar tendencias y palabras clave.</p>
+                    <p><strong>Software:</strong> Perplexity AI.</p>
+                </div>
+                <div class="card agent-step" id="step-2">
+                    <h3>2. Estrategia y Alineación SEO</h3>
+                    <p><strong>Función:</strong> Cruzar datos, generar hipótesis.</p>
+                    <p><strong>Software:</strong> Surfer SEO.</p>
+                </div>
+                <div class="card agent-step" id="step-3">
+                    <h3>3. Fabricación de Contenido</h3>
+                    <p><strong>Función:</strong> Imágenes, gráficos, optimización y redacción.</p>
+                    <p><strong>Software:</strong> Claude.</p>
+                </div>
+                <div class="card agent-step" id="step-4">
+                    <h3>4. Análisis y Publicación</h3>
+                    <p><strong>Función:</strong> Evaluación por el equipo humano.</p>
+                    <p><strong>Software:</strong> N.R.V.</p>
+                </div>
+                <div class="card agent-step" id="step-5">
+                    <h3>5. Fase de Sensor (Decisiones)</h3>
+                    <p><strong>Lógica:</strong> Si funciona -> Reforzar. Si no -> Replantear.</p>
+                </div>
             </div>
         </section>
 
-        <section class="agent-panel" id="panel-aad">
-            <h2>3. Agente de Ajuste Dinámico (AAD)</h2>
-            <p class="subtitle">Actuador técnico y escalamiento humano.</p>
-            <div class="data-box">
-                <h3>Propuesta de Ajuste (JSON-LD / HTML)</h3>
-                <pre id="aad-code-diff" class="code-diff">Sin cambios pendientes.</pre>
+        <!-- Columna 3: Salidas -->
+        <section class="column">
+            <h2>Acción y Resultados</h2>
+            <div class="card output-card" id="out-portfolio">
+                <h3>Portafolio de Publicaciones</h3>
+                <p>Colección actual de activos y asignación de contenido.</p>
             </div>
-            <div class="action-buttons">
-                <button id="btn-approve" class="btn success" disabled>Aprobar Cambio</button>
-                <button id="btn-reject" class="btn danger" disabled>Rechazar</button>
+            <div class="card output-card" id="out-cms">
+                <h3>Ejecución de Publicación</h3>
+                <p>Subir contenido a la plataforma web (CMS).</p>
             </div>
-            <div class="log-console" id="log-aad">
-                <p>> AAD inactivo.</p>
+            <div class="card output-card" id="out-metrics">
+                <h3>Métricas de Desempeño SEO</h3>
+                <p>Medir Tráfico Orgánico, Conversiones y Ranking.</p>
             </div>
         </section>
-    </div>
+    </main>
+
+    <!-- Bucle de Retroalimentación -->
+    <footer class="feedback-loop" id="feedback-agi">
+        <div class="feedback-content">
+            <span class="arrow-left">⟵ RETROALIMENTACIÓN</span>
+            <p><strong>OBJETIVO AGI:</strong> El agente aprende a aprender, adaptándose a cualquier condición de mercado de posicionamiento (no solo patrones pasados).</p>
+        </div>
+    </footer>
 
     <script src="app.js"></script>
 </body>

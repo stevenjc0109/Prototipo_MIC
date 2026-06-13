@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard SOP - Arquitectura Multiagente</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <h1>Sistema de Control Multiagente SEO</h1>
+        <div class="metrics">
+            <span class="badge success">Estabilidad Sistema: 85.9%</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="agent-panel" id="panel-amc">
+            <h2>1. Agente de Monitoreo Continuo (AMC)</h2>
+            <p class="subtitle">Sensor del sistema en tiempo real.</p>
+            <div class="data-box">
+                <h3>Telemetría (Core Web Vitals & SERP)</h3>
+                <ul id="amc-telemetry">
+                    <li>Esperando datos de rastreadores...</li>
+                </ul>
+            </div>
+            <button id="btn-simulate-anomaly" class="btn primary">Simular Caída de Tráfico</button>
+            <div class="log-console" id="log-amc">
+                <p>> AMC Inicializado. Monitoreando entorno probabilístico...</p>
+            </div>
+        </section>
+
+        <section class="agent-panel" id="panel-aps">
+            <h2>2. Agente de Procesamiento Semántico (APS)</h2>
+            <p class="subtitle">Análisis de distancia vectorial y brechas de entidad.</p>
+            <div class="data-box">
+                <h3>Directrices Generadas (SOP)</h3>
+                <ul id="aps-sops">
+                    <li class="idle-text">En espera de alertas del AMC...</li>
+                </ul>
+            </div>
+            <div class="log-console" id="log-aps">
+                <p>> APS en espera de JSON estructurado...</p>
+            </div>
+        </section>
+
+        <section class="agent-panel" id="panel-aad">
+            <h2>3. Agente de Ajuste Dinámico (AAD)</h2>
+            <p class="subtitle">Actuador técnico y escalamiento humano.</p>
+            <div class="data-box">
+                <h3>Propuesta de Ajuste (JSON-LD / HTML)</h3>
+                <pre id="aad-code-diff" class="code-diff">Sin cambios pendientes.</pre>
+            </div>
+            <div class="action-buttons">
+                <button id="btn-approve" class="btn success" disabled>Aprobar Cambio</button>
+                <button id="btn-reject" class="btn danger" disabled>Rechazar</button>
+            </div>
+            <div class="log-console" id="log-aad">
+                <p>> AAD inactivo.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
